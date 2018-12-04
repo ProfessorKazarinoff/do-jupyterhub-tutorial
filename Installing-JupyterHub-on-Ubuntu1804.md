@@ -26,10 +26,14 @@ When you're finished, you'll be able to log into your JupyterHub server running 
 
 Before you begin this guide you'll need the following:
 
-- 1 Ubuntu18.04 server <!-- Also specify the amount of RAM the server needs if relevant. -->
+- One Ubuntu 16.04 server set up by following the [Initial Server Setup with Ubuntu 18.04 tutorial](#)
 - A non-root user with sudo privileges (<insert link to Initial Server Setup article for the OS used in this tutorial>) explains how to set this up.)
-- (Optional) If software such as Nginx needs to be installed, link to the proper article describing how to install it.
-- A GitHub account with a username and password
+- A fully qualified domain name (FQDN) with an A record pointing your domain to your server's IPv4 address. You can purchase a FQDN on Namecheap or get one for free on Freenom, and you can follow this [hostname tutorial](#) for details on how to set up DNS records.
+- The following DNS records set up for your server. You can follow this [hostname tutorial](#) for details on how to add them.
+    - An A record with your server name (e.g. ipa.example.com) pointing to your server's IPv4 address.
+    - An AAAA record with your server name pointing to your server's IPv6 address, if you want your server reachable via IPv6.
+- Nginx installed and set up with Let's Encrypt. You can install Nginx by following this [How To Install Nginx on Ubuntu 18.04](#), then set up Let's Encrypt by following the first two steps of [How To Secure Nginx with Let's Encrypt on Ubuntu 18.04](#). 
+- A GitHub account with a username and password. If you don't have a GitHub account sign up for one [here](#).
 
 ## Step 1 — Install Miniconda
 
