@@ -65,7 +65,39 @@ content
 
 Transition to the next step.
 
-## Step 3 — Title Case
+## Step 3 — Run and Test JupyterHub
+
+Another introduction
+
+content
+
+Transition to the next step.
+
+## Step 3 — Configure Nginx
+
+Another introduction
+
+content
+
+Transition to the next step.
+
+## Step 3 — SSL security
+
+Another introduction
+
+content
+
+Transition to the next step.
+
+## Step 3 — Run JupyterHub as a System Service
+
+Another introduction
+
+content
+
+Transition to the next step.
+
+## Step 3 — Add GitHub Authentication
 
 Another introduction
 
@@ -78,6 +110,8 @@ Transition to the next step.
 In this article you [configured/set up/built/deployed] [something]. Now you can....
 
 <!-- Speak  to reader benefits of this technique or procedure and optionally provide places for further exploration. -->
+
+For futher explanation see: JupyterHub documentation, Littlest JupyterHub deployment, Zero to JupyterHub on Kubernetes.
 
 <!-- Some examples of how to mark up various things
 
