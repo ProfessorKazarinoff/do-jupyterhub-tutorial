@@ -16,7 +16,13 @@ DO will test the article and send it back if DO runs into technical problems, wh
 Introductory paragraph about the topic that explains what this topic is about and why the reader should care; what problem does it solve?
 -->
 
+What is the goal of the tutorial? What will the reader accomplish if they follow it?
+
 In this guide, you will deploy JupyterHub on an Ubuntu 18.04 server. [JupyterHub](#) hosts [Jupyter Notebooks](#) on a virtual server. JupyterHub allows you run Jupyter Notebooks from anywhere.
+
+What software is involved, and what does each component do (briefly)? Python JupyterHub Nginx
+
+What are the benefits of using this particular software in this configuration? What are some practical reasons why the reader should follow this tutorial? If you need a JupyterHub server for your company or research group. Deploy JupyterHub with a class or training.
 
 When you're finished, you'll be able to log into your JupyterHub server running on Digitial Ocean.
 
