@@ -9,7 +9,7 @@ DO will test the article and send it back if DO runs into technical problems, wh
 
 # How To Install JupyterHub on Ubuntu 18.04
 
-![Alt text for screen readers](https://imgur.com/HeHb8Jt)
+![Alt text for screen readers](https://imgur.com/HeHb8Jt.png)
 
 ### Introduction
 <!-- 
