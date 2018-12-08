@@ -18,13 +18,17 @@ Introductory paragraph about the topic that explains what this topic is about an
 
 What is the goal of the tutorial? What will the reader accomplish if they follow it?
 
-In this guide, you will deploy JupyterHub on an Ubuntu 18.04 server. [JupyterHub](#) hosts [Jupyter Notebooks](#) on a virtual server. JupyterHub allows you run Jupyter Notebooks from anywhere.
+In this guide, you learn how to will deploy JupyterHub using Python 3 on an Ubuntu 18.04 server. [JupyterHub](https://jupyterhub.readthedocs.io/en/latest/) hosts [Jupyter Notebooks](https://jupyter-notebook.readthedocs.io/en/latest/) on a virtual server. Typically, Jupyter Notebooks are run locally, but JupyterHub allows you run Jupyter Notebooks in the cloud.
 
-What software is involved, and what does each component do (briefly)? Python JupyterHub Nginx
+<!-- 
+What software is involved, and what does each component do (briefly)?
+-->
 
-What are the benefits of using this particular software in this configuration? What are some practical reasons why the reader should follow this tutorial? If you need a JupyterHub server for your company or research group. Deploy JupyterHub with a class or training.
+In this tutorial, you will use an Ubuntu 18.04 server, Python 3, JupyterHub, Jupyter Notebooks, Nginx and certbot. The Ubuntu 18.04 server will run the instance of JupyterHub. JupyterHub itself will create Jupyter Notebook servers for each user that logs in. Jupyter Notebooks are what JupyterHub servers. In the Jupyter Notebooks you can run Python 3 code. Nginx will be used as a reverse proxy to field incomming connections and forward them on to Jupyter Hub. Certbot will be used to create SSL credentials so you can run JupyterHub using https. 
 
-When you're finished, you'll be able to log into your JupyterHub server running on Digitial Ocean.
+Running JupyterHub in the cloud is benefiticial because it means that your developer team, research group, or class do not need to install Python locally run Python code. In addition, Python code is usually run on Windows, MacOS or Linux. When you run JupyterHub on the server you can run Python code with a Chromebook, a tablet and even a phone. If you want a team to be able to run Python code, without installing any software continue reading. You can deploy JupyterHub as part of a class or training.
+
+When you're finished with this tutorial, you'll be able to log into your JupyterHub server and run Python code in Jupyter Notebooks hosted in the cloud.
 
 ## Prerequisites
 
@@ -32,24 +36,46 @@ When you're finished, you'll be able to log into your JupyterHub server running 
 
 Before you begin this guide you'll need the following:
 
-- One Ubuntu 16.04 server set up by following the [Initial Server Setup with Ubuntu 18.04 tutorial](#)
+- One Ubuntu 18.04 server set up by following the [Initial Server Setup with Ubuntu 18.04 tutorial](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
 - A non-root user with sudo privileges (<insert link to Initial Server Setup article for the OS used in this tutorial>) explains how to set this up.)
 - A fully qualified domain name (FQDN) with an A record pointing your domain to your server's IPv4 address. You can purchase a FQDN on Namecheap or get one for free on Freenom, and you can follow this [hostname tutorial](#) for details on how to set up DNS records.
 - The following DNS records set up for your server. You can follow this [hostname tutorial](#) for details on how to add them.
     - An A record with your server name (e.g. ipa.example.com) pointing to your server's IPv4 address.
     - An AAAA record with your server name pointing to your server's IPv6 address, if you want your server reachable via IPv6.
-- Nginx installed and set up with Let's Encrypt. You can install Nginx by following this [How To Install Nginx on Ubuntu 18.04](#), then set up Let's Encrypt by following the first two steps of [How To Secure Nginx with Let's Encrypt on Ubuntu 18.04](#). 
-- A GitHub account with a username and password. If you don't have a GitHub account sign up for one [here](#).
+- A GitHub account with a username and password. If you don't have a GitHub account sign up for one at [github.com/join](https://github.com/join).
 
 ## Step 1 — Install Miniconda
 
-First we are going to install [Miniconda](#) on the server. Miniconda is a minimal distribution of Python released by Ananconda. 
+First, we are going to install [Miniconda](#) on the server. Miniconda is a minimal distribution of Python released by Ananconda. It comes with Python and the conda package manager. Browse the releases at [https://repo.continuum.io/miniconda/](https://repo.continuum.io/miniconda/). You are looking for the latest release of Miniconda3 for 64-bit Linux. Look for something like:
 
-First wget Miniconda
+Miniconda3-latest-Linux-x86.sh
 
-./ run mini conda
+Right-click on the installer file and select [copy link address] the link will have the form:
 
-set /opt as installation directory
+https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86.sh
+
+Log into the server as a non-root sudo user. Navigate to the ```tmp``` directory then use wget to download the installer.
+
+```
+$ cd ~/tmp
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86.sh
+````
+
+Once the download finishes, you can view the installer file in the ```tmp``` directory.
+
+```
+$ ls
+
+Miniconda3-latest-Linux-x86.sh
+```
+
+Make the installer file executable, then run the installer script
+
+```
+$ chmod g+e Miniconda3-latest-Linux-x86.sh
+./Miniconda3-latest-Linux-x86.sh
+```
+
 
 change permissions
 
